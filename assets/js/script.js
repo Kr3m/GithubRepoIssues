@@ -54,10 +54,10 @@ $(document).ready(function () {
             let maxDate = moment(Math.max.apply(null, dates)).format(ds);
             let minDate = moment(Math.min.apply(null, dates)).format(ds);
 
-            htmlstr = "<h2 class='text-center'>Info</h2><table class='table table-borderless'><tbody><tr><th scope='row'><h4>Open Issues</h4></th><td><h4>" +
-                open_issues + "</h4></td></tr><tr><th scope='row'><h4>" +
-                "Average Age</h4></th><td><h4>" + average_age + " years</h4</td></tr><tr><th scope='row'><h4>Oldest Issue</h4></th><td><h4>" + minDate +
-                "</h4></td></tr><tr><th scope='row'><h4>Latest Issue</h4>" +
+            htmlstr = "<h2 style='margin-left: 15px'>Info</h2><table class='table table-borderless'><tbody><tr><th scope='row' class='text-right'><h4>Open Issues</h4></th><td><h4>" +
+                open_issues + "</h4></td></tr><tr><th scope='row' class='text-right'><h4>" +
+                "Average Age</h4></th><td><h4>" + average_age + " years</h4</td></tr><tr><th scope='row' class='text-right'><h4>Oldest Issue</h4></th><td><h4>" + minDate +
+                "</h4></td></tr><tr><th scope='row' class='text-right'><h4>Latest Issue</h4>" +
                 "</th><td><h4>" + maxDate + "</h4></td></tr></tbody></table> ";
 
             $(info).html(htmlstr);

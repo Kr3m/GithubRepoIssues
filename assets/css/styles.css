@@ -15,7 +15,7 @@ ul {
     padding-right: 5px;
 }
 
-.sorting, .sorting_desc, .sorting_asc, .orange {
+.sorting, .sorting_desc, .sorting_asc, .orange, .table-borderless {
     background-color: #BD5915;
 }
 
@@ -31,7 +31,27 @@ ul {
     background-color: #234099;
 }
 
+.container {
+    background: #868686;
+}
+
 .table-borderless td,
 .table-borderless th {
     border: 0;
+}
+
+.table-borderless {
+    margin: 5px;
+}
+
+hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 18px 0;
 }
