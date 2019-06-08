@@ -11,14 +11,23 @@ ul {
     display: none;
 }
 
-.fa-link, .fa-calendar-alt {
+.fa-link, .fa-calendar-alt, .fa-comments, .fa-tag {
     padding-right: 5px;
 }
 
-.sorting, .sorting_desc, .sorting_asc {
+.sorting, .sorting_desc, .sorting_asc, .orange {
     background-color: #BD5915;
+}
+
+.orange {
+    padding: 5px;
 }
 
 .even_row {
     background-color: #234099;
+}
+
+.table-borderless td,
+.table-borderless th {
+    border: 0;
 }

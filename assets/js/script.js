@@ -54,9 +54,11 @@ $(document).ready(function () {
             let maxDate = moment(Math.max.apply(null, dates)).format(ds);
             let minDate = moment(Math.min.apply(null, dates)).format(ds);
 
-            htmlstr = "<h2 class='text-center'>Info</h2><table class='table'><tbody><tr><th scope='row'>Open Issues</th><td>" + open_issues + "</td></tr><tr><th scope='row'>" +
-                "Average Age</th><td>" + average_age + " years</td></tr><tr><th scope='row'>Oldest Issue</th><td>" + minDate + "</td></tr><tr><th scope='row'>Latest Issue" +
-                "</th><td>" + maxDate + "</td></tr></tbody></table> ";
+            htmlstr = "<h2 class='text-center'>Info</h2><table class='table table-borderless'><tbody><tr><th scope='row'><h4>Open Issues</h4></th><td><h4>" +
+                open_issues + "</h4></td></tr><tr><th scope='row'><h4>" +
+                "Average Age</h4></th><td><h4>" + average_age + " years</h4</td></tr><tr><th scope='row'><h4>Oldest Issue</h4></th><td><h4>" + minDate +
+                "</h4></td></tr><tr><th scope='row'><h4>Latest Issue</h4>" +
+                "</th><td><h4>" + maxDate + "</h4></td></tr></tbody></table> ";
 
             $(info).html(htmlstr);
             $("#selSort").show();
@@ -84,10 +86,14 @@ $(document).ready(function () {
             function setData(arr) {
                 let dataArr = [];
                 for(let i =0; i < length; i++) {
-                    dataArr[i] = [getAnchor(arr[i]), getCal(arr[i].created_at), arr[i].comments, getCal(arr[i].updated_at), getLabels(arr[i].labels)];
+                    dataArr[i] = [getAnchor(arr[i]), getCal(arr[i].created_at), getComments(arr[i].comments), getCal(arr[i].updated_at), getLabels(arr[i].labels)];
                 }
                 console.log(dataArr);
                 return dataArr;
+            }
+
+            function getComments(comments) {
+                return "<i class='far fa-comments'></i>" + comments;
             }
 
             function getAnchor(arr) {
@@ -102,9 +108,9 @@ $(document).ready(function () {
 
             function getLabels(lbl) {
                 if(lbl.length === 0) {
-                    return "No Labels";
+                    return "<i class='fas fa-tag'></i>No Labels";
                 } else {
-                    let str = "";
+                    let str = "<i class='fas fa-tag'></i>";
                     lbl.forEach(function (e) {
                         str += e.name + " ";
                     });
