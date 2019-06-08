@@ -23,7 +23,11 @@ ul {
     padding: 5px;
 }
 
-.even_row {
+.red {
+    background: red;
+}
+
+.even_row, .blue {
     background-color: #234099;
 }
 

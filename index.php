@@ -17,7 +17,7 @@
         <div class="row"><div class="col"><h1>GitHub Repo Issues</h1></div></div>
 		<div class="row no-gutters">
 			<div class="col">
-                <h2 class="orange">Git Repo</h2>
+                <h2>Git Repo</h2>
 				<form id="fetchrepo" action="#">
 					<div class="form-group">
 <!--						<label for="gitrepo"><h2 class="orange">Git Repo</h2></label>-->
