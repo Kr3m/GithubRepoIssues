@@ -1,7 +1,24 @@
+/*
+Colors:
+#BD5915 - orange
+ */
+
 ul {
     list-style: none;
 }
 
 #selSort {
     display: none;
+}
+
+.fa-link, .fa-calendar-alt {
+    padding-right: 5px;
+}
+
+.sorting, .sorting_desc, .sorting_asc {
+    background-color: #BD5915;
+}
+
+.even_row {
+    background-color: #234099;
 }

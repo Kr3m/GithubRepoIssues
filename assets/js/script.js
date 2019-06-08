@@ -4,7 +4,9 @@ $(document).ready(function () {
     const fetchrepo = document.getElementById("fetchrepo");
     const gitrepo = document.getElementById("gitrepo");
     const info = document.getElementById("info");
-    const sortTable = document.getElementById("sortTable");
+    // const sortTable = document.getElementById("sortTable");
+    const ds = "ddd, MMM Do, YYYY @h:mma";
+    // const ds = "ddd, MMM Do, YYYY @h:ma";
     let arr = [];
     let average_age = [];
     let dates = [];
@@ -35,12 +37,13 @@ $(document).ready(function () {
                     let obj = {};
                     let m1 = moment();
                     let m2 = moment(data[i].created_at);
-                    obj.age = m1.diff(m2, 'seconds');
-                    obj.created_at = data[i].created_at;
+                    obj.age = m1.diff(m2, 'years');
+                    obj.created_at = getDateFormat(data[i].created_at);
                     obj.title = data[i].title;
                     obj.comments = data[i].comments;
-                    obj.updated_at = data[i].updated_at;
+                    obj.updated_at = getDateFormat(data[i].updated_at);
                     obj.labels = data[i].labels;
+                    obj.url = data[i].html_url;
                     arr.push(obj);
                     open_issues = arr.length;
                     dates.push(m2);
@@ -48,11 +51,13 @@ $(document).ready(function () {
             }
 
             average_age = get_average_age(arr);
-            let maxDate = new Date(Math.max.apply(null, dates));
-            let minDate = new Date(Math.min.apply(null, dates));
-            htmlstr = "<h2>Info</h2><ul><li><strong>Open Issues: " + open_issues + "</strong></li><li><strong>Average Age: " + average_age +
-            "</strong></li><li><strong>Oldest Issue: " + minDate + "</strong></li><li><strong>Latest Issue: " + maxDate +
-            "</strong></li></ul>";
+            let maxDate = moment(Math.max.apply(null, dates)).format(ds);
+            let minDate = moment(Math.min.apply(null, dates)).format(ds);
+
+            htmlstr = "<h2 class='text-center'>Info</h2><table class='table'><tbody><tr><th scope='row'>Open Issues</th><td>" + open_issues + "</td></tr><tr><th scope='row'>" +
+                "Average Age</th><td>" + average_age + " years</td></tr><tr><th scope='row'>Oldest Issue</th><td>" + minDate + "</td></tr><tr><th scope='row'>Latest Issue" +
+                "</th><td>" + maxDate + "</td></tr></tbody></table> ";
+
             $(info).html(htmlstr);
             $("#selSort").show();
 
@@ -61,6 +66,8 @@ $(document).ready(function () {
                 searching: false,
                 info: false,
                 data: setData(arr),
+                order: [[3, 'desc']],
+                stripeClasses: ['odd-row', 'even_row'],
                 columns: [
                     {title: "Title"},
                     {title: "Created On"},
@@ -69,18 +76,28 @@ $(document).ready(function () {
                     {title: "Labels"}
                 ]
             });
-            sortTable.onchange = function () {
-                let val = parseInt(this.value);
-                oTable.order([val, 'asc']).draw();
-            };
+            // sortTable.onchange = function () {
+            //     let val = parseInt(this.value);
+            //     oTable.order([val, 'asc']).draw();
+            // };
 
             function setData(arr) {
                 let dataArr = [];
                 for(let i =0; i < length; i++) {
-                    dataArr[i] = [arr[i].title, arr[i].created_at, arr[i].comments, arr[i].updated_at, getLabels(arr[i].labels)];
+                    dataArr[i] = [getAnchor(arr[i]), getCal(arr[i].created_at), arr[i].comments, getCal(arr[i].updated_at), getLabels(arr[i].labels)];
                 }
                 console.log(dataArr);
                 return dataArr;
+            }
+
+            function getAnchor(arr) {
+                let url = arr.url;
+                let title = arr.title;
+                return "<a target='_blank' href='" + url + "'><i class= 'fas fa-link'></i>" + title + "</a>";
+            }
+
+            function getCal(date) {
+                return "<i class='far fa-calendar-alt'></i>" + date;
             }
 
             function getLabels(lbl) {
@@ -107,5 +124,8 @@ $(document).ready(function () {
             total += $arr[i].age;
         }
         return total / length;
+    }
+    function getDateFormat($date) {
+        return moment($date).format(ds);
     }
 });

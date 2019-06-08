@@ -6,7 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 	<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -27,24 +30,27 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">
-				<form id="selSort" action="#">
-					<div class="form-group">
-						<label for="sortTable"><h2>Sort Table</h2></label>
-						<select name="sortTable" id="sortTable" class="form-control">
-							<option value=""></option>
-							<option value="1">Created Date</option>
-							<option value="2"># of Comments</option>
-							<option value="3">Last Updated</option>
-						</select>
-					</div>
-				</form>
+			<div class="col" id="selSort">
+                <h2>Sortable Table</h2>
+<!--				<form id="selSort" action="#">-->
+<!--					<div class="form-group">-->
+<!--						<label for="sortTable"><h2>Sortable Table</h2></label>-->
+<!--						<select name="sortTable" id="sortTable" class="form-control">-->
+<!--							<option value=""></option>-->
+<!--							<option value="1">Created Date</option>-->
+<!--							<option value="2"># of Comments</option>-->
+<!--							<option value="3">Last Updated</option>-->
+<!--						</select>-->
+<!--					</div>-->
+<!--				</form>-->
 			</div>
 			<div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<table class="table" id="example"></table>
+				<table style="width: 100%" class="table" id="example"></table>
 			</div>
 		</div>
 	</div>
@@ -55,6 +61,7 @@
 <!--<script src="https://github.com/octokit/rest.js/releases/download/v16.28.0/octokit-rest.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="assets/js/script.js"></script>
+<script src="https://kit.fontawesome.com/b5e6605726.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
