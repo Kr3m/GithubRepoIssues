@@ -54,7 +54,7 @@ $(document).ready(function () {
             "</strong></li><li><strong>Oldest Issue: " + minDate + "</strong></li><li><strong>Latest Issue: " + maxDate +
             "</strong></li></ul>";
             $(info).html(htmlstr);
-            $("#selSort").show();I made it
+            $("#selSort").show();
 
             let oTable = $('#example').DataTable( {
                 paging: false,
