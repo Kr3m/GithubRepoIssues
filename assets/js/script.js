@@ -26,7 +26,7 @@ $(document).ready(function () {
     }
 
     function getData() {
-        let req = octokit.issues.listForRepo({
+        octokit.issues.listForRepo({
             owner: owner,
             repo: repo
         })
@@ -63,7 +63,7 @@ $(document).ready(function () {
             $(info).html(htmlstr);
             $("#selSort").show();
 
-            let oTable = $('#example').DataTable( {
+            $('#example').DataTable( {
                 paging: false,
                 searching: false,
                 info: false,
@@ -88,7 +88,7 @@ $(document).ready(function () {
                 for(let i =0; i < length; i++) {
                     dataArr[i] = [getAnchor(arr[i]), getCal(arr[i].created_at), getComments(arr[i].comments), getCal(arr[i].updated_at), getLabels(arr[i].labels)];
                 }
-                console.log(dataArr);
+                // console.log(dataArr);
                 return dataArr;
             }
 
@@ -120,7 +120,7 @@ $(document).ready(function () {
         });
         $(".dropdown a").click(function (e) {
             e.preventDefault();
-            console.log(this.target.id);
+            // console.log(this.target.id);
         });
     }
 
